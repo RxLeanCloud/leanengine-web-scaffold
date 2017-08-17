@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
   }
 
   get fileUrl() {
-    return `/assets/post/${this.postName}.md`;
+    return `./assets/post/${this.postName}.md`;
   }
 
   ngOnInit() {

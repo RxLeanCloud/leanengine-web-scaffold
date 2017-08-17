@@ -1,11 +1,36 @@
-<md-card>
-  <md-card-title><a [routerLink]="['/']">{{ 'title' | translate }}</a></md-card-title>
-  <md-card-content fxFlexOffset="15" fxLayoutWrap fxLayoutGap="1em">
-    <md-list>
-      <md-list-item *ngFor="let link of links">
-        <a [routerLink]="['/post/', link.url]">{{ link.text | translate }}</a>
-        <!-- <button md-button (click)="go(link)"> {{ link.text | translate }}</button> -->
-      </md-list-item>
-    </md-list>
-  </md-card-content>
-</md-card>
+<div fxLayoutGap="1em" fxLayoutWrap>
+  <h1 fxFill><a [routerLink]="['/']">{{ 'title' | translate }}</a></h1>
+
+  <div fxFlex>
+    <md-card fxFlexOffset="15" fxFlex="75">
+      <md-card-title>{{ 'post-list' | translate }}</md-card-title>
+      <md-card-content fxLayoutGap="1em">
+        <md-list>
+          <md-list-item *ngFor="let link of links">
+            <a [routerLink]="['/post/', link.url]">{{ link.text | translate }}</a>
+            <!-- <button md-button (click)="go(link)"> {{ link.text | translate }}</button> -->
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+      <md-divider></md-divider>
+      <!-- <md-card-actions>
+        <div fxLayout="row">
+          <button md-icon-button>
+        <md-icon>share</md-icon>
+      </button>
+          <button md-icon-button>
+        <md-icon>favorite</md-icon>
+      </button>
+          <span fxFlex></span>
+          <button md-button>
+        More Info
+      </button>
+          <button md-button>
+        Save as
+      </button>
+        </div>
+      </md-card-actions> -->
+    </md-card>
+  </div>
+
+</div>
