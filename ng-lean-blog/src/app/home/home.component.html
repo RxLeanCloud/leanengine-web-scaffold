@@ -1,0 +1,11 @@
+<md-card>
+  <md-card-title><a [routerLink]="['/']">{{ 'title' | translate }}</a></md-card-title>
+  <md-card-content fxFlexOffset="15" fxLayoutWrap fxLayoutGap="1em">
+    <md-list>
+      <md-list-item *ngFor="let link of links">
+        <a [routerLink]="['/post/', link.url]">{{ link.text | translate }}</a>
+        <!-- <button md-button (click)="go(link)"> {{ link.text | translate }}</button> -->
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>

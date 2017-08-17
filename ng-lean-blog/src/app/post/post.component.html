@@ -1,0 +1,6 @@
+<md-card>
+  <md-card-title><a [routerLink]="['/']">{{ 'back-to-home' | translate }}</a></md-card-title>
+  <md-card-content fxLayout="row" fxLayoutWrap fxLayoutGap="1em" fxFlexOffset="15" fxFlexAlign="stretch">
+    <markdown-to-html [src]="fileUrl"></markdown-to-html>
+  </md-card-content>
+</md-card>
