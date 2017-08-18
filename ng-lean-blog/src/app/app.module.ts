@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, enableProdMode } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialComponentsModule } from './material-components';
@@ -25,6 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+import { PostService } from './post.service';
+import { AsyncPipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MarkdownToHtmlModule.forRoot(),
   ],
-  providers: [MdIconRegistry],
+  providers: [MdIconRegistry, Title, PostService, AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

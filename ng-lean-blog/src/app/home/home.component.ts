@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { Title } from '@angular/platform-browser';
+import { PostService } from '../post.service';
+import { Observable, Subscriber } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ng-lean-home',
@@ -8,26 +12,24 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  posts = [{
-    name: 'why-rx',
-    text: 'Rx 初探'
-  }, {
-    name: 'about',
-    text: '关于我'
-  }];
-  constructor(private router: Router, ) { }
+  constructor(private router: Router,
+    public postService: PostService,
+    public translate: TranslateService,
+    private titleService: Title) {
+    this.translate.get(['title']).subscribe(values => {
+      let title = values['title'];
+      this.titleService.setTitle(title);
+    });
+
+  }
 
   ngOnInit() {
   }
-  get links() {
-    return this.posts.map(post => {
-      return {
-        url: `${post.name}`,
-        text: `${post.text}`,
-      };
-    });
+
+  get postsAsync() {
+    // let result = Observable.from([this.posts]);
+    let result = this.postService.all();
+    return result;
   }
-  go(link) {
-    this.router.navigate([`/post/`, link.url]);
-  }
+
 }

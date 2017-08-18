@@ -1,16 +1,20 @@
 <div fxLayoutGap="1em" fxLayoutWrap>
   <h1 fxFill><a [routerLink]="['/']">{{ 'title' | translate }}</a></h1>
 
-  <div fxFlex>
+  <div fxFill>
     <md-card fxFlexOffset="15" fxFlex="75">
       <md-card-title>{{ 'post-list' | translate }}</md-card-title>
-      <md-card-content fxLayoutGap="1em">
-        <md-list>
-          <md-list-item *ngFor="let link of links">
-            <a [routerLink]="['/post/', link.url]">{{ link.text | translate }}</a>
-            <!-- <button md-button (click)="go(link)"> {{ link.text | translate }}</button> -->
-          </md-list-item>
-        </md-list>
+      <md-card-content fxLayout="row" fxLayoutGap="1em" fxLayoutWrap>
+
+        <div>
+          <md-list>
+            <md-list-item *ngFor="let post of (postsAsync | async )">
+              <a [routerLink]="['/post/', post.name]">{{ post.title | translate }}</a>
+              <!-- <button md-button (click)="go(link)"> {{ link.text | translate }}</button> -->
+            </md-list-item>
+          </md-list>
+        </div>
+
       </md-card-content>
       <md-divider></md-divider>
       <!-- <md-card-actions>
