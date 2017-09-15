@@ -14,3 +14,23 @@ npm install -g @angular/cli
 ```sh
 ng new Todo-Demo
 ```
+
+### 拷贝 app.js 和 server.js
+
+将当前项目内的 app.js 以及 server.js 拷贝到您的 angular 项目的根目录中
+
+### 本地编译
+
+```
+ng build --aot -prod 
+```
+
+### 发布到云引擎
+
+```
+lean depoy
+```
+
+### 打开浏览器预览
+
+访问 `https:{your-custom-subdomain}.leanapp.cn` 即可。
